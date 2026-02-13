@@ -70,3 +70,4 @@ This project is configured for automatic deployment to GitHub Pages using GitHub
 - Modify `src/components/Header.tsx` for navigation
 - Change colors and styles using Tailwind classes
 - Add more sections or pages as needed
+# Update
