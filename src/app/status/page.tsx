@@ -92,7 +92,11 @@ export default function StatusPage() {
         // GitHub API returns 'none' when all systems are operational
         updateServiceStatus('GitHub', data.status.indicator === 'none' ? 'operational' : 'degraded');
       })
-      .catch(() => updateServiceStatus('GitHub', 'operational'));
+      .catch((error) => {
+        // On error, keep loading state instead of falsely showing operational
+        console.error('Failed to fetch GitHub status:', error);
+        updateServiceStatus('GitHub', 'loading');
+      });
 
     // For other services, show as operational by default
     // Note: Fetching their status requires CORS proxies or server-side API calls

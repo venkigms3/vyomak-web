@@ -28,10 +28,21 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Security: Content Security Policy meta tag for static export */}
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.githubstatus.com; frame-ancestors 'none';"
+        />
+        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+        <meta httpEquiv="X-Frame-Options" content="DENY" />
+        <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+        
         {/* 
           Theme initialization script
           Runs before React hydration to prevent flash of wrong theme.
           Checks localStorage for saved theme, falls back to system preference.
+          Note: This inline script is required for theme initialization and is safe
+          as it contains no user input and only interacts with localStorage and classList.
         */}
         <script
           dangerouslySetInnerHTML={{
