@@ -13,53 +13,53 @@ const posts = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 text-slate-900">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 text-slate-900 dark:text-white">
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-sky-50 via-white to-indigo-50" />
-        <div className="absolute -left-16 -top-10 h-64 w-64 rounded-full bg-sky-200/50 blur-3xl" />
-        <div className="absolute -right-10 top-12 h-72 w-72 rounded-full bg-indigo-200/40 blur-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-br from-sky-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800" />
+        <div className="absolute -left-16 -top-10 h-64 w-64 rounded-full bg-sky-200/50 dark:bg-sky-900/30 blur-3xl" />
+        <div className="absolute -right-10 top-12 h-72 w-72 rounded-full bg-indigo-200/40 dark:bg-indigo-900/30 blur-3xl" />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="max-w-3xl space-y-8">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1 text-sm font-medium text-sky-700 shadow-sm ring-1 ring-sky-100">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/70 dark:bg-gray-800/70 px-3 py-1 text-sm font-medium text-sky-700 dark:text-sky-400 shadow-sm ring-1 ring-sky-100 dark:ring-sky-900">
               <span className="h-2 w-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500" />
               Technology &amp; Cloud Solutions
             </span>
-            <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-slate-900">
+            <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-slate-900 dark:text-white">
               Crafting elegant, resilient experiences for the modern web.
             </h1>
-            <p className="text-lg md:text-xl text-slate-600 max-w-2xl">
+            <p className="text-lg md:text-xl text-slate-600 dark:text-gray-300 max-w-2xl">
               I explore cloud architecture, front-end craftsmanship, and developer experience. Here you'll find ideas,
               guides, and practical notes from building secure, scalable products.
             </p>
             <div className="flex flex-wrap gap-4">
               <a
                 href="/blog"
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-200 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sky-200"
+                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-200 dark:shadow-sky-900 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sky-200 dark:hover:shadow-sky-900"
               >
                 View the blog
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-lg"
+                className="inline-flex items-center justify-center rounded-full border border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-6 py-3 text-sm font-semibold text-slate-800 dark:text-white shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 dark:hover:border-gray-600 hover:shadow-lg"
               >
                 Contact me
               </a>
             </div>
             <div className="grid gap-4 sm:grid-cols-3 pt-4">
-              <div className="rounded-2xl border border-slate-100 bg-white/80 p-4 shadow-sm">
-                <p className="text-sm text-slate-500">Focus</p>
-                <p className="text-lg font-semibold text-slate-900">Cloud Strategy</p>
-                <p className="text-sm text-slate-500 mt-1">Cost-aware, secure, and scalable solutions.</p>
+              <div className="rounded-2xl border border-slate-100 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 p-4 shadow-sm">
+                <p className="text-sm text-slate-500 dark:text-gray-400">Focus</p>
+                <p className="text-lg font-semibold text-slate-900 dark:text-white">Cloud Strategy</p>
+                <p className="text-sm text-slate-500 dark:text-gray-400 mt-1">Cost-aware, secure, and scalable solutions.</p>
               </div>
-              <div className="rounded-2xl border border-slate-100 bg-white/80 p-4 shadow-sm">
-                <p className="text-sm text-slate-500">Tooling</p>
-                <p className="text-lg font-semibold text-slate-900">Next.js &amp; React</p>
-                <p className="text-sm text-slate-500 mt-1">Performance-first front-end craft.</p>
+              <div className="rounded-2xl border border-slate-100 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 p-4 shadow-sm">
+                <p className="text-sm text-slate-500 dark:text-gray-400">Tooling</p>
+                <p className="text-lg font-semibold text-slate-900 dark:text-white">Next.js &amp; React</p>
+                <p className="text-sm text-slate-500 dark:text-gray-400 mt-1">Performance-first front-end craft.</p>
               </div>
-              <div className="rounded-2xl border border-slate-100 bg-white/80 p-4 shadow-sm">
-                <p className="text-sm text-slate-500">Approach</p>
-                <p className="text-lg font-semibold text-slate-900">Pragmatic DX</p>
-                <p className="text-sm text-slate-500 mt-1">Clear patterns and maintainable systems.</p>
+              <div className="rounded-2xl border border-slate-100 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 p-4 shadow-sm">
+                <p className="text-sm text-slate-500 dark:text-gray-400">Approach</p>
+                <p className="text-lg font-semibold text-slate-900 dark:text-white">Pragmatic DX</p>
+                <p className="text-sm text-slate-500 dark:text-gray-400 mt-1">Clear patterns and maintainable systems.</p>
               </div>
             </div>
           </div>
@@ -70,38 +70,38 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 md:grid-cols-2 items-start">
             <div className="space-y-4">
-              <p className="text-sm font-semibold uppercase tracking-wide text-sky-700">About</p>
-              <h2 className="text-3xl md:text-4xl font-semibold text-slate-900">Hi, I'm Vyomak.</h2>
-              <p className="text-lg text-slate-600 leading-relaxed">
+              <p className="text-sm font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-400">About</p>
+              <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 dark:text-white">Hi, I'm Vyomak.</h2>
+              <p className="text-lg text-slate-600 dark:text-gray-300 leading-relaxed">
                 I'm a technology enthusiast and cloud solutions developer who cares about elegant experiences and
                 reliable systems. I enjoy distilling complex ideas into actionable steps teams can use.
               </p>
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl border border-slate-100 bg-white/80 p-4 shadow-sm">
-                  <p className="text-sm font-semibold text-slate-800">What I share</p>
-                  <p className="text-sm text-slate-600 mt-1">
+                <div className="rounded-2xl border border-slate-100 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 p-4 shadow-sm">
+                  <p className="text-sm font-semibold text-slate-800 dark:text-white">What I share</p>
+                  <p className="text-sm text-slate-600 dark:text-gray-300 mt-1">
                     Architectural notes, front-end patterns, deployment playbooks, and learnings from real-world builds.
                   </p>
                 </div>
-                <div className="rounded-2xl border border-slate-100 bg-white/80 p-4 shadow-sm">
-                  <p className="text-sm font-semibold text-slate-800">How I work</p>
-                  <p className="text-sm text-slate-600 mt-1">
+                <div className="rounded-2xl border border-slate-100 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 p-4 shadow-sm">
+                  <p className="text-sm font-semibold text-slate-800 dark:text-white">How I work</p>
+                  <p className="text-sm text-slate-600 dark:text-gray-300 mt-1">
                     Collaborative, experiment-friendly, and focused on measurable impact with thoughtful polish.
                   </p>
                 </div>
               </div>
             </div>
-            <div className="rounded-3xl border border-slate-100 bg-white/90 p-8 shadow-lg shadow-slate-200/50">
+            <div className="rounded-3xl border border-slate-100 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 p-8 shadow-lg shadow-slate-200/50 dark:shadow-gray-900/50">
               <div className="flex items-center gap-3 mb-4">
                 <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-500 text-white grid place-items-center text-xl font-semibold shadow-md">
                   V
                 </div>
                 <div>
-                  <p className="text-sm text-slate-500">Technology Enthusiast</p>
-                  <p className="text-lg font-semibold text-slate-900">Cloud &amp; Web</p>
+                  <p className="text-sm text-slate-500 dark:text-gray-400">Technology Enthusiast</p>
+                  <p className="text-lg font-semibold text-slate-900 dark:text-white">Cloud &amp; Web</p>
                 </div>
               </div>
-              <ul className="space-y-3 text-slate-700">
+              <ul className="space-y-3 text-slate-700 dark:text-gray-300">
                 <li className="flex items-start gap-3">
                   <span className="mt-1 h-2.5 w-2.5 rounded-full bg-sky-500" />
                   <span>Designing scalable architectures with sensible guardrails and observability.</span>
@@ -124,12 +124,12 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-sky-700">Latest posts</p>
-              <h2 className="text-3xl font-semibold text-slate-900">Fresh insights</h2>
+              <p className="text-sm font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-400">Latest posts</p>
+              <h2 className="text-3xl font-semibold text-slate-900 dark:text-white">Fresh insights</h2>
             </div>
             <a
               href="/blog"
-              className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-sky-700 hover:text-sky-800"
+              className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-sky-700 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-300"
             >
               View all posts →
             </a>
@@ -139,18 +139,18 @@ export default function Home() {
               <a
                 key={post.href}
                 href={post.href}
-                className="group relative overflow-hidden rounded-3xl border border-slate-100 bg-white/90 p-6 shadow-md shadow-slate-200/60 transition hover:-translate-y-1 hover:shadow-xl"
+                className="group relative overflow-hidden rounded-3xl border border-slate-100 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 p-6 shadow-md shadow-slate-200/60 dark:shadow-gray-900/60 transition hover:-translate-y-1 hover:shadow-xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-50/80 via-white to-indigo-50/80 opacity-0 transition group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-br from-sky-50/80 via-white to-indigo-50/80 dark:from-sky-900/20 dark:via-gray-800 dark:to-indigo-900/20 opacity-0 transition group-hover:opacity-100" />
                 <div className="relative space-y-3">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 ring-1 ring-slate-200">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 dark:bg-gray-700 px-3 py-1 text-xs font-semibold text-slate-700 dark:text-gray-300 ring-1 ring-slate-200 dark:ring-gray-600">
                     Blog
                   </span>
-                  <h3 className="text-xl font-semibold text-slate-900 group-hover:text-sky-800">
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white group-hover:text-sky-800 dark:group-hover:text-sky-400">
                     {post.title}
                   </h3>
-                  <p className="text-slate-600 leading-relaxed">{post.description}</p>
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-sky-700">
+                  <p className="text-slate-600 dark:text-gray-300 leading-relaxed">{post.description}</p>
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-sky-700 dark:text-sky-400">
                     Read more
                     <span aria-hidden>→</span>
                   </span>
@@ -161,7 +161,7 @@ export default function Home() {
           <div className="mt-10 text-center sm:hidden">
             <a
               href="/blog"
-              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-200 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sky-200"
+              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-200 dark:shadow-sky-900 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sky-200 dark:hover:shadow-sky-900"
             >
               View all posts
             </a>
