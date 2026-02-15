@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header";
 
+// Configure Google Fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -13,6 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Site metadata
 export const metadata: Metadata = {
   title: "Vyomak - Technology Blog & Portfolio",
   description: "Personal website of Vyomak, sharing insights on cloud computing, web development, and tech solutions.",
@@ -26,6 +28,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* 
+          Theme initialization script
+          Runs before React hydration to prevent flash of wrong theme.
+          Checks localStorage for saved theme, falls back to system preference.
+        */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
