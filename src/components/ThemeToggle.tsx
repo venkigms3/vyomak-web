@@ -49,9 +49,7 @@ export default function ThemeToggle() {
    * Updates state, localStorage, and DOM
    */
   const toggleTheme = () => {
-    console.log('Toggle clicked! Current theme:', theme);
     const newTheme = theme === 'light' ? 'dark' : 'light';
-    console.log('New theme:', newTheme);
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     applyTheme(newTheme);
