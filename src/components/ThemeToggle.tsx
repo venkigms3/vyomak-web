@@ -5,8 +5,8 @@
  * The theme preference is persisted in localStorage and applied to the HTML element.
  * 
  * Features:
- * - Moon icon for light mode (click to enable dark mode)
- * - Sun icon for dark mode (click to enable light mode)
+ * - Sun icon for light mode (current state)
+ * - Moon icon for dark mode (current state)
  * - Respects system preference on first visit
  * - Prevents hydration mismatch by initializing state as null
  */
@@ -49,10 +49,20 @@ export default function ThemeToggle() {
    * Updates state, localStorage, and DOM
    */
   const toggleTheme = () => {
+    console.log('[DEBUG] Toggle clicked! Current theme:', theme);
     const newTheme = theme === 'light' ? 'dark' : 'light';
+    console.log('[DEBUG] New theme will be:', newTheme);
+    
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     applyTheme(newTheme);
+    
+    // Verify the change
+    setTimeout(() => {
+      const hasClass = document.documentElement.classList.contains('dark');
+      console.log('[DEBUG] After toggle - dark class exists:', hasClass);
+      console.log('[DEBUG] All classes:', document.documentElement.className);
+    }, 100);
   };
 
   // Don't render until mounted to avoid hydration issues
@@ -72,14 +82,14 @@ export default function ThemeToggle() {
       aria-label="Toggle theme"
       type="button"
     >
-      {/* Show moon icon in light mode, sun icon in dark mode */}
-      {theme === 'light' ? (
-        // Moon icon - indicates dark mode is available
+      {/* Show current theme icon: Sun for light mode, Moon for dark mode */}
+      {theme === 'dark' ? (
+        // Moon icon - showing we're in dark mode
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
         </svg>
       ) : (
-        // Sun icon - indicates light mode is available
+        // Sun icon - showing we're in light mode
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
