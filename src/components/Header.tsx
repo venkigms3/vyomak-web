@@ -1,7 +1,7 @@
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Header() {
@@ -31,7 +31,7 @@ export default function Header() {
               ))}
             </div>
             <a
-              href="#contact"
+              href="/#contact"
               className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-sky-200 transition hover:-translate-y-0.5 hover:shadow-lg"
             >
               Let's talk
