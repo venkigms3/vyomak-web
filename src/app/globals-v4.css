@@ -1,0 +1,23 @@
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/preflight" layer(base);
+@import "tailwindcss/utilities" layer(utilities);
+
+@layer theme {
+  :root {
+    /* Light mode colors */
+    --color-background: #ffffff;
+    --color-foreground: #171717;
+  }
+  
+  /* Dark mode colors when .dark class is on root */
+  .dark {
+    --color-background: #0a0a0a;
+    --color-foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
