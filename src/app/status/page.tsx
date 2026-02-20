@@ -10,6 +10,7 @@
  * - Links to official status pages
  * - Overall system health summary
  * - Dark mode support
+ * - 5-minute caching to prevent API rate limiting
  * 
  * Status Types:
  * - operational: All systems working (green)
@@ -20,7 +21,7 @@
 
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 // Type definition for service status
 type ServiceStatus = {
@@ -29,6 +30,17 @@ type ServiceStatus = {
   description: string;
   url: string;  // Link to official status page
   icon: string; // Emoji icon
+};
+
+// Cache for GitHub status API responses
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+let cachedGitHubStatus: 'operational' | 'degraded' | null = null;
+let cacheTime = 0;
+
+// Export for testing purposes
+export const resetCache = () => {
+  cachedGitHubStatus = null;
+  cacheTime = 0;
 };
 
 export default function StatusPage() {
@@ -81,22 +93,69 @@ export default function StatusPage() {
   // Timestamp state - initialized empty to prevent hydration mismatch
   const [lastUpdated, setLastUpdated] = useState<string>('');
 
+  /**
+   * Update status for a specific service
+   * @param name - Service name to update
+   * @param status - New status value
+   */
+  const updateServiceStatus = useCallback((name: string, status: ServiceStatus['status']) => {
+    setServices((prev) =>
+      prev.map((service) =>
+        service.name === name ? { ...service, status } : service
+      )
+    );
+  }, []);
+
   useEffect(() => {
     // Set timestamp after mount to avoid hydration mismatch
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Initializing timestamp on mount
     setLastUpdated(new Date().toLocaleString());
     
-    // Fetch GitHub status from their public API
-    fetch('https://www.githubstatus.com/api/v2/status.json')
-      .then((res) => res.json())
-      .then((data) => {
-        // GitHub API returns 'none' when all systems are operational
-        updateServiceStatus('GitHub', data.status.indicator === 'none' ? 'operational' : 'degraded');
+    // Check cache first
+    const now = Date.now();
+    if (cachedGitHubStatus && now - cacheTime < CACHE_DURATION) {
+      updateServiceStatus('GitHub', cachedGitHubStatus);
+    } else {
+      // Fetch GitHub status from their public API with timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+      
+      fetch('https://www.githubstatus.com/api/v2/status.json', {
+        signal: controller.signal,
       })
-      .catch((error) => {
-        // On error, keep loading state instead of falsely showing operational
-        console.error('Failed to fetch GitHub status:', error);
-        updateServiceStatus('GitHub', 'loading');
-      });
+        .then((res) => {
+          clearTimeout(timeoutId);
+          if (!res.ok) {
+            throw new Error(`HTTP ${res.status}`);
+          }
+          return res.json();
+        })
+        .then((data) => {
+          // Validate response structure
+          if (!data || typeof data !== 'object' || !data.status || typeof data.status.indicator !== 'string') {
+            throw new Error('Invalid API response structure');
+          }
+          
+          // GitHub API returns 'none' when all systems are operational
+          const status = data.status.indicator === 'none' ? 'operational' : 'degraded';
+          
+          // Update cache
+          cachedGitHubStatus = status;
+          cacheTime = now;
+          
+          updateServiceStatus('GitHub', status);
+        })
+        .catch((error) => {
+          clearTimeout(timeoutId);
+          // On error, keep loading state instead of falsely showing operational
+          if (error.name === 'AbortError') {
+            console.error('GitHub status request timed out');
+          } else {
+            console.error('Failed to fetch GitHub status:', error);
+          }
+          updateServiceStatus('GitHub', 'loading');
+        });
+    }
 
     // For other services, show as operational by default
     // Note: Fetching their status requires CORS proxies or server-side API calls
@@ -108,20 +167,7 @@ export default function StatusPage() {
       updateServiceStatus('GitLab', 'operational');
       updateServiceStatus('Oracle Cloud', 'operational');
     }, 1000);
-  }, []);
-
-  /**
-   * Update status for a specific service
-   * @param name - Service name to update
-   * @param status - New status value
-   */
-  const updateServiceStatus = (name: string, status: ServiceStatus['status']) => {
-    setServices((prev) =>
-      prev.map((service) =>
-        service.name === name ? { ...service, status } : service
-      )
-    );
-  };
+  }, [updateServiceStatus]);
 
   /**
    * Get Tailwind color class based on status

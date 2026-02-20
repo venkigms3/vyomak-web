@@ -11,7 +11,7 @@
  */
 
 import { render, screen, waitFor } from '@testing-library/react'
-import StatusPage from './page'
+import StatusPage, { resetCache } from './page'
 
 // Mock fetch globally
 global.fetch = jest.fn()
@@ -19,6 +19,7 @@ global.fetch = jest.fn()
 describe('Status Page', () => {
   beforeEach(() => {
     jest.clearAllMocks()
+    resetCache() // Reset cache between tests
     
     // Mock fetch with a default implementation
     ;(global.fetch as jest.Mock) = jest.fn().mockResolvedValue({
@@ -112,7 +113,10 @@ describe('Status Page', () => {
       
       await waitFor(() => {
         expect(global.fetch).toHaveBeenCalledWith(
-          'https://www.githubstatus.com/api/v2/status.json'
+          'https://www.githubstatus.com/api/v2/status.json',
+          expect.objectContaining({
+            signal: expect.any(AbortSignal)
+          })
         )
       })
     })
