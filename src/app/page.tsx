@@ -1,19 +1,10 @@
-const posts = [
-  {
-    title: "Getting Started with Next.js",
-    description: "Build modern web applications with Next.js, React, and edge-ready tooling.",
-    href: "/blog/getting-started-nextjs",
-  },
-  {
-    title: "Cloud Solutions for Developers",
-    description: "A practical look at cloud platforms, architecture choices, and cost-aware design.",
-    href: "/blog/cloud-solutions",
-  },
-];
+import HomeSlider from "@/components/HomeSlider";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 text-slate-900 dark:text-white">
+      <HomeSlider />
+
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-sky-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800" />
         <div className="absolute -left-16 -top-10 h-64 w-64 rounded-full bg-sky-200/50 dark:bg-sky-900/30 blur-3xl" />
@@ -116,55 +107,6 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-400">Latest posts</p>
-              <h2 className="text-3xl font-semibold text-slate-900 dark:text-white">Fresh insights</h2>
-            </div>
-            <a
-              href="/blog"
-              className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-sky-700 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-300"
-            >
-              View all posts →
-            </a>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            {posts.map((post) => (
-              <a
-                key={post.href}
-                href={post.href}
-                className="group relative overflow-hidden rounded-3xl border border-slate-100 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 p-6 shadow-md shadow-slate-200/60 dark:shadow-gray-900/60 transition hover:-translate-y-1 hover:shadow-xl"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-50/80 via-white to-indigo-50/80 dark:from-sky-900/20 dark:via-gray-800 dark:to-indigo-900/20 opacity-0 transition group-hover:opacity-100" />
-                <div className="relative space-y-3">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 dark:bg-gray-700 px-3 py-1 text-xs font-semibold text-slate-700 dark:text-gray-300 ring-1 ring-slate-200 dark:ring-gray-600">
-                    Blog
-                  </span>
-                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white group-hover:text-sky-800 dark:group-hover:text-sky-400">
-                    {post.title}
-                  </h3>
-                  <p className="text-slate-600 dark:text-gray-300 leading-relaxed">{post.description}</p>
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-sky-700 dark:text-sky-400">
-                    Read more
-                    <span aria-hidden>→</span>
-                  </span>
-                </div>
-              </a>
-            ))}
-          </div>
-          <div className="mt-10 text-center sm:hidden">
-            <a
-              href="/blog"
-              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-200 dark:shadow-sky-900 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sky-200 dark:hover:shadow-sky-900"
-            >
-              View all posts
-            </a>
           </div>
         </div>
       </section>

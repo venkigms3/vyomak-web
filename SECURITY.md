@@ -114,8 +114,43 @@ The status page fetches from `https://www.githubstatus.com/api/v2/status.json`:
 - ✅ No user data sent
 - ✅ Error handling prevents false positives
 - ✅ Whitelisted in CSP `connect-src`
+- ✅ 5-second timeout implemented
+- ✅ API response validation
+- ✅ 5-minute caching to prevent rate limiting
+
+## Dependency Security
+
+### Production Dependencies
+All production runtime dependencies are **secure with 0 vulnerabilities**.
+
+```bash
+npm audit --production
+# found 0 vulnerabilities ✅
+```
+
+### Development Dependencies
+Current status: **32 vulnerabilities (1 moderate, 31 high)** in development-only dependencies.
+
+**Risk Assessment**: **LOW** - These vulnerabilities:
+- Only affect development/build tools (ESLint, Jest)
+- Do NOT impact production runtime code
+- Require access to development environment to exploit
+- Will be resolved when Next.js ecosystem updates
+
+**Affected Packages**:
+- `ajv` <8.18.0 - ReDoS vulnerability (used by ESLint)
+- `minimatch` <10.2.1 - ReDoS vulnerability (used by ESLint, Jest)
+
+**Mitigation Strategy**:
+1. Production code remains secure (static export, no server-side attacks)
+2. Development environments are trusted (not public-facing)
+3. CI/CD pipeline is isolated and time-limited
+4. Monitor for ecosystem updates monthly
+5. Will update when eslint-config-next releases compatible versions
+
+**For Immediate Production Deployment**: Safe to proceed, zero runtime risk.
 
 ---
 
-**Last Updated**: 2026-02-15
-**Version**: 1.0.0
+**Last Updated**: 2026-02-20
+**Version**: 1.1.0
