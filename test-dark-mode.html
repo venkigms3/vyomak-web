@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dark Mode Test</title>
+</head>
+<body>
+  <script>
+    // Test the dark mode logic
+    console.log('Testing dark mode...');
+    const root = document.documentElement;
+    
+    // Test 1: Add dark class
+    root.classList.add('dark');
+    console.log('Added dark class:', root.classList.contains('dark'));
+    
+    // Test 2: Remove dark class
+    root.classList.remove('dark');
+    console.log('Removed dark class:', root.classList.contains('dark'));
+    
+    // Test 3: Toggle
+    root.classList.toggle('dark', true);
+    console.log('Toggle to dark:', root.classList.contains('dark'));
+    
+    root.classList.toggle('dark', false);
+    console.log('Toggle to light:', root.classList.contains('dark'));
+  </script>
+</body>
+</html>
