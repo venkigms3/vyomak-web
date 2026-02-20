@@ -20,17 +20,6 @@ export default function ThemeToggle() {
   // Will be set to actual theme after component mounts
   const [theme, setTheme] = useState<'light' | 'dark' | null>(null);
 
-  useEffect(() => {
-    // Get theme from localStorage or system preference
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-    
-    // Set state and apply theme to DOM
-    setTheme(initialTheme as 'light' | 'dark');
-    applyTheme(initialTheme);
-  }, []);
-
   /**
    * Apply theme to the document root element
    * Adds 'dark' class for dark mode, removes it for light mode
@@ -44,25 +33,43 @@ export default function ThemeToggle() {
     }
   };
 
+  useEffect(() => {
+    // Get theme from localStorage or system preference
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+      
+      // Set state and apply theme to DOM
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Initializing from localStorage on mount
+      setTheme(initialTheme as 'light' | 'dark');
+      applyTheme(initialTheme);
+    } catch {
+      // Fallback to system preference if localStorage unavailable
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const fallbackTheme = prefersDark ? 'dark' : 'light';
+      setTheme(fallbackTheme);
+      applyTheme(fallbackTheme);
+    }
+  }, []);
+
   /**
    * Toggle between light and dark themes
    * Updates state, localStorage, and DOM
    */
   const toggleTheme = () => {
-    console.log('[DEBUG] Toggle clicked! Current theme:', theme);
     const newTheme = theme === 'light' ? 'dark' : 'light';
-    console.log('[DEBUG] New theme will be:', newTheme);
     
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
+    try {
+      localStorage.setItem('theme', newTheme);
+    } catch (error) {
+      // Continue without localStorage if unavailable
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('Failed to save theme preference:', error);
+      }
+    }
     applyTheme(newTheme);
-    
-    // Verify the change
-    setTimeout(() => {
-      const hasClass = document.documentElement.classList.contains('dark');
-      console.log('[DEBUG] After toggle - dark class exists:', hasClass);
-      console.log('[DEBUG] All classes:', document.documentElement.className);
-    }, 100);
   };
 
   // Don't render until mounted to avoid hydration issues
