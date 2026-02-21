@@ -1,169 +1,186 @@
 import HomeSlider from "@/components/HomeSlider";
 
+const techStack = ["Next.js", "React", "TypeScript", "AWS", "Azure", "Terraform", "Node.js"];
+
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 text-slate-900 dark:text-white">
+    <div className="min-h-screen bg-white dark:bg-[#080810] text-slate-900 dark:text-white overflow-x-hidden">
 
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        {/* Animated mesh background */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(56,189,248,0.15),transparent)] dark:bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(56,189,248,0.08),transparent)]" />
-          <div className="absolute top-0 left-1/4 h-96 w-96 rounded-full bg-sky-200/30 dark:bg-sky-900/20 blur-3xl" />
-          <div className="absolute top-20 right-1/4 h-80 w-80 rounded-full bg-indigo-200/30 dark:bg-indigo-900/20 blur-3xl" />
+      {/* ── Hero ──────────────────────────────────────── */}
+      <section className="relative min-h-[92vh] flex items-center">
+        {/* Dot grid */}
+        <div className="absolute inset-0 dot-grid opacity-50 dark:opacity-30 pointer-events-none" />
+
+        {/* Gradient orbs */}
+        <div className="absolute top-1/3 left-1/4 h-[480px] w-[480px] rounded-full bg-sky-400/20 dark:bg-sky-500/10 blur-[120px] animate-float pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 h-[380px] w-[380px] rounded-full bg-indigo-400/20 dark:bg-indigo-500/10 blur-[100px] animate-float-slow pointer-events-none" style={{ animationDelay: "3s" }} />
+
+        <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+          {/* Available badge */}
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur px-4 py-2 mb-10 shadow-sm animate-fade-up">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
+            </span>
+            <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">Available for collaboration</span>
+          </div>
+
+          {/* Headline */}
+          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[96px] font-black leading-[0.95] tracking-tighter mb-8">
+            <span className="block text-slate-900 dark:text-white">Building</span>
+            <span className="block bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent animate-gradient-x">
+              the future
+            </span>
+            <span className="block text-slate-900 dark:text-white">of the web.</span>
+          </h1>
+
+          <p className="text-xl md:text-2xl text-slate-500 dark:text-slate-400 max-w-2xl mb-12 leading-relaxed font-light">
+            Cloud architect &amp; front-end craftsman. I build elegant, resilient products that scale with confidence.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-wrap gap-4 mb-14">
+            <a
+              href="/blog"
+              className="group inline-flex items-center gap-2 rounded-full bg-slate-900 dark:bg-white px-8 py-4 text-sm font-bold text-white dark:text-slate-900 shadow-xl shadow-slate-900/20 dark:shadow-white/10 transition-all hover:-translate-y-1 hover:shadow-2xl"
+            >
+              Read the blog
+              <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-slate-200 dark:border-slate-700 px-8 py-4 text-sm font-bold text-slate-700 dark:text-slate-300 transition-all hover:-translate-y-1 hover:border-sky-400 dark:hover:border-sky-500 hover:text-sky-600 dark:hover:text-sky-400"
+            >
+              Get in touch
+            </a>
+          </div>
+
+          {/* Tech stack pills */}
+          <div className="flex flex-wrap gap-2">
+            {techStack.map((tech) => (
+              <span
+                key={tech}
+                className="inline-flex items-center rounded-full border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/80 px-3.5 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-400 transition hover:border-sky-300 dark:hover:border-sky-700 hover:text-sky-700 dark:hover:text-sky-400"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 lg:pt-32 lg:pb-28">
-          <div className="max-w-3xl space-y-8">
-            {/* Badge */}
-            <span className="inline-flex items-center gap-2 rounded-full border border-sky-200/60 dark:border-sky-800/60 bg-sky-50/80 dark:bg-sky-950/60 px-4 py-1.5 text-sm font-medium text-sky-700 dark:text-sky-400 backdrop-blur-sm shadow-sm">
-              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 animate-pulse" />
-              Technology &amp; Cloud Solutions
-            </span>
-
-            {/* Headline with gradient */}
-            <h1 className="text-5xl md:text-7xl font-bold leading-[1.08] tracking-tight">
-              Crafting{" "}
-              <span className="bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
-                elegant,
-              </span>{" "}
-              resilient experiences.
-            </h1>
-
-            <p className="text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
-              I explore cloud architecture, front-end craftsmanship, and developer experience. Here you'll find ideas,
-              guides, and practical notes from building secure, scalable products.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="/blog"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-sky-500/25 dark:shadow-sky-900/40 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sky-500/30"
-              >
-                View the blog
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 px-7 py-3.5 text-sm font-semibold text-slate-800 dark:text-white backdrop-blur-sm shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-md"
-              >
-                Contact me
-              </a>
-            </div>
-
-            {/* Stats row */}
-            <div className="grid gap-4 sm:grid-cols-3 pt-4">
-              {[
-                { label: "Focus", title: "Cloud Strategy", desc: "Cost-aware, secure, and scalable solutions." },
-                { label: "Tooling", title: "Next.js & React", desc: "Performance-first front-end craft." },
-                { label: "Approach", title: "Pragmatic DX", desc: "Clear patterns and maintainable systems." },
-              ].map((card) => (
-                <div
-                  key={card.title}
-                  className="group rounded-2xl border border-slate-100 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 p-5 shadow-sm backdrop-blur-sm transition hover:border-sky-200 dark:hover:border-sky-800 hover:shadow-md"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-widest text-sky-600 dark:text-sky-400 mb-1">{card.label}</p>
-                  <p className="text-base font-bold text-slate-900 dark:text-white">{card.title}</p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{card.desc}</p>
-                </div>
-              ))}
-            </div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+          <span className="text-xs font-semibold uppercase tracking-widest text-slate-500">Scroll</span>
+          <div className="h-10 w-5 rounded-full border-2 border-slate-400 flex items-start justify-center p-1">
+            <div className="h-2 w-1 rounded-full bg-slate-400 animate-bounce" />
           </div>
         </div>
       </section>
 
-      {/* Slider */}
-      <HomeSlider />
-
-      {/* About */}
-      <section className="py-24">
+      {/* ── Bento grid ────────────────────────────────── */}
+      <section className="py-24 bg-slate-50 dark:bg-slate-950">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 md:grid-cols-2 items-center">
-            <div className="space-y-6">
-              <p className="text-xs font-bold uppercase tracking-widest text-sky-600 dark:text-sky-400">About</p>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-                Hi, I'm{" "}
-                <span className="bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent">
-                  Vyomak.
-                </span>
-              </h2>
-              <p className="text-lg text-slate-500 dark:text-slate-400 leading-relaxed">
-                I'm a technology enthusiast and cloud solutions developer who cares about elegant experiences and
-                reliable systems. I enjoy distilling complex ideas into actionable steps teams can use.
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 auto-rows-auto">
+
+            {/* About — large */}
+            <div className="sm:col-span-2 relative overflow-hidden rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-8 shadow-sm group hover:shadow-xl transition-shadow">
+              <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gradient-to-br from-sky-400/20 to-indigo-400/20 blur-2xl" />
+              <p className="text-xs font-black uppercase tracking-widest text-sky-600 dark:text-sky-400 mb-3">About</p>
+              <h2 className="text-3xl font-black mb-4 tracking-tight">Hi, I'm <span className="bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent">Vyomak.</span></h2>
+              <p className="text-slate-500 dark:text-slate-400 leading-relaxed mb-8 max-w-lg">
+                Technology enthusiast and cloud solutions developer. I care deeply about elegant experiences
+                and reliable systems, distilling complex ideas into actionable steps teams can actually use.
               </p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {[
-                  {
-                    title: "What I share",
-                    desc: "Architectural notes, front-end patterns, deployment playbooks, and learnings from real-world builds.",
-                  },
-                  {
-                    title: "How I work",
-                    desc: "Collaborative, experiment-friendly, and focused on measurable impact with thoughtful polish.",
-                  },
-                ].map((c) => (
-                  <div
-                    key={c.title}
-                    className="rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-5"
-                  >
-                    <p className="text-sm font-bold text-slate-800 dark:text-white">{c.title}</p>
-                    <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">{c.desc}</p>
+              <div className="flex gap-8">
+                {[{ n: "5+", l: "Years exp." }, { n: "20+", l: "Projects" }, { n: "3", l: "Cloud certs" }].map((s) => (
+                  <div key={s.l}>
+                    <p className="text-3xl font-black text-slate-900 dark:text-white">{s.n}</p>
+                    <p className="text-xs text-slate-400 dark:text-slate-500 font-semibold uppercase tracking-wide mt-1">{s.l}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Profile card */}
-            <div className="relative">
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-sky-500/10 to-indigo-500/10 blur-xl" />
-              <div className="relative rounded-3xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-xl">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-500 text-white grid place-items-center text-2xl font-bold shadow-lg shadow-sky-500/30">
-                    V
-                  </div>
-                  <div>
-                    <p className="text-xs text-slate-500 dark:text-slate-400">Technology Enthusiast</p>
-                    <p className="text-lg font-bold text-slate-900 dark:text-white">Cloud &amp; Web</p>
-                  </div>
-                </div>
-                <ul className="space-y-4">
-                  {[
-                    { color: "bg-sky-500", text: "Designing scalable architectures with sensible guardrails and observability." },
-                    { color: "bg-indigo-500", text: "Building performant interfaces that balance clarity, accessibility, and delight." },
-                    { color: "bg-emerald-500", text: "Translating lessons learned into guides, templates, and repeatable playbooks." },
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <span className={`mt-1.5 h-2 w-2 rounded-full flex-shrink-0 ${item.color}`} />
-                      <span className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{item.text}</span>
-                    </li>
-                  ))}
-                </ul>
+            {/* Cloud focus — gradient */}
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-600 p-8 text-white shadow-xl">
+              <div className="absolute -right-8 -bottom-8 h-36 w-36 rounded-full bg-white/10" />
+              <div className="absolute -left-4 -top-4 h-20 w-20 rounded-full bg-white/10" />
+              <p className="text-xs font-black uppercase tracking-widest text-white/60 mb-4">Focus</p>
+              <h3 className="text-2xl font-black mb-3 leading-tight">Cloud Strategy</h3>
+              <p className="text-white/75 text-sm leading-relaxed">Cost-aware, secure, and scalable infrastructure solutions.</p>
+              <div className="mt-6 inline-flex items-center gap-2 text-xs font-bold text-white/80">
+                <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+                Actively building
               </div>
             </div>
+
+            {/* Status */}
+            <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-8 shadow-sm">
+              <p className="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Current status</p>
+              <div className="flex items-center gap-3 mb-3">
+                <span className="relative flex h-4 w-4">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-4 w-4 rounded-full bg-emerald-500" />
+                </span>
+                <span className="text-xl font-black">Available</span>
+              </div>
+              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Open to interesting projects and collaborations worldwide.</p>
+            </div>
+
+            {/* Tooling — dark */}
+            <div className="relative overflow-hidden rounded-3xl bg-slate-900 dark:bg-slate-800 p-8 text-white shadow-sm">
+              <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-sky-500/20 blur-xl" />
+              <p className="text-xs font-black uppercase tracking-widest text-slate-400 mb-4">Tooling</p>
+              <h3 className="text-2xl font-black mb-3">Next.js &amp; React</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">Performance-first front-end craft with modern tooling.</p>
+              <div className="mt-6 flex flex-wrap gap-1.5">
+                {["TypeScript", "Tailwind", "Vitest"].map((t) => (
+                  <span key={t} className="rounded-full bg-slate-700 px-2.5 py-1 text-xs font-semibold text-slate-300">{t}</span>
+                ))}
+              </div>
+            </div>
+
+            {/* Approach — emerald */}
+            <div className="relative overflow-hidden rounded-3xl bg-emerald-500 p-8 text-white shadow-sm">
+              <div className="absolute -right-6 -bottom-6 h-32 w-32 rounded-full bg-white/10" />
+              <p className="text-xs font-black uppercase tracking-widest text-white/60 mb-4">Approach</p>
+              <h3 className="text-2xl font-black mb-3">Pragmatic DX</h3>
+              <p className="text-white/80 text-sm leading-relaxed">Clear patterns, maintainable systems, and measurable impact.</p>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-600 p-12 shadow-2xl shadow-sky-500/20">
-            {/* Decorative blobs */}
-            <div className="absolute -left-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
-            <div className="absolute -right-16 -bottom-16 h-64 w-64 rounded-full bg-indigo-300/20 blur-3xl" />
-            <div className="relative space-y-4 text-white">
-              <p className="text-xs font-bold uppercase tracking-widest text-white/70">Get in touch</p>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Let's build something impactful.</h2>
-              <p className="text-lg text-white/75 max-w-xl leading-relaxed">
+      {/* ── Slider ────────────────────────────────────── */}
+      <div className="bg-white dark:bg-[#080810]">
+        <HomeSlider />
+      </div>
+
+      {/* ── Contact ───────────────────────────────────── */}
+      <section id="contact" className="py-24 bg-slate-50 dark:bg-slate-950">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-[2rem] bg-slate-900 dark:bg-slate-900 p-12 md:p-16 shadow-2xl">
+            {/* Grid pattern overlay */}
+            <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
+            {/* Orbs */}
+            <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-sky-500/20 blur-3xl" />
+            <div className="absolute -right-20 -bottom-20 h-64 w-64 rounded-full bg-indigo-500/20 blur-3xl" />
+
+            <div className="relative">
+              <p className="text-xs font-black uppercase tracking-widest text-slate-400 mb-4">Get in touch</p>
+              <h2 className="text-5xl md:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
+                Let's build something <span className="bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent">impactful.</span>
+              </h2>
+              <p className="text-lg text-slate-400 max-w-xl mb-10 leading-relaxed">
                 Have questions, ideas, or a project in mind? I love collaborating on thoughtful, human-centered products.
               </p>
-              <div className="flex flex-wrap gap-4 pt-2">
+              <div className="flex flex-wrap gap-4">
                 <a
                   href="mailto:contact@vyomak.com"
-                  className="inline-flex items-center gap-2 justify-center rounded-full bg-white px-7 py-3.5 text-sm font-bold text-slate-900 shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl"
+                  className="group inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-bold text-slate-900 shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -172,7 +189,7 @@ export default function Home() {
                 </a>
                 <a
                   href="/blog"
-                  className="inline-flex items-center gap-2 justify-center rounded-full border border-white/40 bg-white/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/20"
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-slate-700 px-8 py-4 text-sm font-bold text-slate-300 transition-all hover:-translate-y-1 hover:border-slate-500 hover:text-white"
                 >
                   Read the blog
                 </a>
