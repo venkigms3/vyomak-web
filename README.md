@@ -60,6 +60,7 @@ The site is optimised for search engines out of the box:
 - **`robots.txt`**: Located at `public/robots.txt` — allows all crawlers and points to the sitemap
 - **`sitemap.xml`**: Located at `public/sitemap.xml` — lists all public routes; update this whenever you add new pages or blog posts
 - **Semantic HTML**: `<time>` elements use the `dateTime` attribute for machine-readable dates
+- **Google Search Console**: Verified via HTML meta tag in `src/app/layout.tsx` (`verification.google`); sitemap submitted at `https://vyomak.com/sitemap.xml`
 
 ### Keeping SEO up to date when adding blog posts
 
