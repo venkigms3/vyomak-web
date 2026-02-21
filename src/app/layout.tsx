@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 // Configure Google Fonts
 const geistSans = Geist({
@@ -38,6 +39,9 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  verification: {
+    google: "avrqcrgGioNgbNm9chrk0CrlDHvnnAqFaQXPa73gqww",
   },
 };
 
@@ -85,6 +89,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

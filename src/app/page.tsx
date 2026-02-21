@@ -2,138 +2,177 @@ import HomeSlider from "@/components/HomeSlider";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 text-slate-900 dark:text-white">
-      <HomeSlider />
+    <div className="min-h-screen bg-white dark:bg-gray-950 text-slate-900 dark:text-white">
 
+      {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-sky-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800" />
-        <div className="absolute -left-16 -top-10 h-64 w-64 rounded-full bg-sky-200/50 dark:bg-sky-900/30 blur-3xl" />
-        <div className="absolute -right-10 top-12 h-72 w-72 rounded-full bg-indigo-200/40 dark:bg-indigo-900/30 blur-3xl" />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        {/* Animated mesh background */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(56,189,248,0.15),transparent)] dark:bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(56,189,248,0.08),transparent)]" />
+          <div className="absolute top-0 left-1/4 h-96 w-96 rounded-full bg-sky-200/30 dark:bg-sky-900/20 blur-3xl" />
+          <div className="absolute top-20 right-1/4 h-80 w-80 rounded-full bg-indigo-200/30 dark:bg-indigo-900/20 blur-3xl" />
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 lg:pt-32 lg:pb-28">
           <div className="max-w-3xl space-y-8">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/70 dark:bg-gray-800/70 px-3 py-1 text-sm font-medium text-sky-700 dark:text-sky-400 shadow-sm ring-1 ring-sky-100 dark:ring-sky-900">
-              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500" />
+            {/* Badge */}
+            <span className="inline-flex items-center gap-2 rounded-full border border-sky-200/60 dark:border-sky-800/60 bg-sky-50/80 dark:bg-sky-950/60 px-4 py-1.5 text-sm font-medium text-sky-700 dark:text-sky-400 backdrop-blur-sm shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 animate-pulse" />
               Technology &amp; Cloud Solutions
             </span>
-            <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-slate-900 dark:text-white">
-              Crafting elegant, resilient experiences for the modern web.
+
+            {/* Headline with gradient */}
+            <h1 className="text-5xl md:text-7xl font-bold leading-[1.08] tracking-tight">
+              Crafting{" "}
+              <span className="bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
+                elegant,
+              </span>{" "}
+              resilient experiences.
             </h1>
-            <p className="text-lg md:text-xl text-slate-600 dark:text-gray-300 max-w-2xl">
+
+            <p className="text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
               I explore cloud architecture, front-end craftsmanship, and developer experience. Here you'll find ideas,
               guides, and practical notes from building secure, scalable products.
             </p>
+
+            {/* CTAs */}
             <div className="flex flex-wrap gap-4">
               <a
                 href="/blog"
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-200 dark:shadow-sky-900 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sky-200 dark:hover:shadow-sky-900"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-sky-500/25 dark:shadow-sky-900/40 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sky-500/30"
               >
                 View the blog
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-full border border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-6 py-3 text-sm font-semibold text-slate-800 dark:text-white shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 dark:hover:border-gray-600 hover:shadow-lg"
+                className="inline-flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 px-7 py-3.5 text-sm font-semibold text-slate-800 dark:text-white backdrop-blur-sm shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-md"
               >
                 Contact me
               </a>
             </div>
+
+            {/* Stats row */}
             <div className="grid gap-4 sm:grid-cols-3 pt-4">
-              <div className="rounded-2xl border border-slate-100 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 p-4 shadow-sm">
-                <p className="text-sm text-slate-500 dark:text-gray-400">Focus</p>
-                <p className="text-lg font-semibold text-slate-900 dark:text-white">Cloud Strategy</p>
-                <p className="text-sm text-slate-500 dark:text-gray-400 mt-1">Cost-aware, secure, and scalable solutions.</p>
-              </div>
-              <div className="rounded-2xl border border-slate-100 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 p-4 shadow-sm">
-                <p className="text-sm text-slate-500 dark:text-gray-400">Tooling</p>
-                <p className="text-lg font-semibold text-slate-900 dark:text-white">Next.js &amp; React</p>
-                <p className="text-sm text-slate-500 dark:text-gray-400 mt-1">Performance-first front-end craft.</p>
-              </div>
-              <div className="rounded-2xl border border-slate-100 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 p-4 shadow-sm">
-                <p className="text-sm text-slate-500 dark:text-gray-400">Approach</p>
-                <p className="text-lg font-semibold text-slate-900 dark:text-white">Pragmatic DX</p>
-                <p className="text-sm text-slate-500 dark:text-gray-400 mt-1">Clear patterns and maintainable systems.</p>
-              </div>
+              {[
+                { label: "Focus", title: "Cloud Strategy", desc: "Cost-aware, secure, and scalable solutions." },
+                { label: "Tooling", title: "Next.js & React", desc: "Performance-first front-end craft." },
+                { label: "Approach", title: "Pragmatic DX", desc: "Clear patterns and maintainable systems." },
+              ].map((card) => (
+                <div
+                  key={card.title}
+                  className="group rounded-2xl border border-slate-100 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 p-5 shadow-sm backdrop-blur-sm transition hover:border-sky-200 dark:hover:border-sky-800 hover:shadow-md"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-widest text-sky-600 dark:text-sky-400 mb-1">{card.label}</p>
+                  <p className="text-base font-bold text-slate-900 dark:text-white">{card.title}</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{card.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-16">
+      {/* Slider */}
+      <HomeSlider />
+
+      {/* About */}
+      <section className="py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 md:grid-cols-2 items-start">
-            <div className="space-y-4">
-              <p className="text-sm font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-400">About</p>
-              <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 dark:text-white">Hi, I'm Vyomak.</h2>
-              <p className="text-lg text-slate-600 dark:text-gray-300 leading-relaxed">
+          <div className="grid gap-12 md:grid-cols-2 items-center">
+            <div className="space-y-6">
+              <p className="text-xs font-bold uppercase tracking-widest text-sky-600 dark:text-sky-400">About</p>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+                Hi, I'm{" "}
+                <span className="bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent">
+                  Vyomak.
+                </span>
+              </h2>
+              <p className="text-lg text-slate-500 dark:text-slate-400 leading-relaxed">
                 I'm a technology enthusiast and cloud solutions developer who cares about elegant experiences and
                 reliable systems. I enjoy distilling complex ideas into actionable steps teams can use.
               </p>
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl border border-slate-100 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 p-4 shadow-sm">
-                  <p className="text-sm font-semibold text-slate-800 dark:text-white">What I share</p>
-                  <p className="text-sm text-slate-600 dark:text-gray-300 mt-1">
-                    Architectural notes, front-end patterns, deployment playbooks, and learnings from real-world builds.
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-slate-100 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 p-4 shadow-sm">
-                  <p className="text-sm font-semibold text-slate-800 dark:text-white">How I work</p>
-                  <p className="text-sm text-slate-600 dark:text-gray-300 mt-1">
-                    Collaborative, experiment-friendly, and focused on measurable impact with thoughtful polish.
-                  </p>
-                </div>
+                {[
+                  {
+                    title: "What I share",
+                    desc: "Architectural notes, front-end patterns, deployment playbooks, and learnings from real-world builds.",
+                  },
+                  {
+                    title: "How I work",
+                    desc: "Collaborative, experiment-friendly, and focused on measurable impact with thoughtful polish.",
+                  },
+                ].map((c) => (
+                  <div
+                    key={c.title}
+                    className="rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-5"
+                  >
+                    <p className="text-sm font-bold text-slate-800 dark:text-white">{c.title}</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">{c.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="rounded-3xl border border-slate-100 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 p-8 shadow-lg shadow-slate-200/50 dark:shadow-gray-900/50">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-500 text-white grid place-items-center text-xl font-semibold shadow-md">
-                  V
+
+            {/* Profile card */}
+            <div className="relative">
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-sky-500/10 to-indigo-500/10 blur-xl" />
+              <div className="relative rounded-3xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-xl">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-500 text-white grid place-items-center text-2xl font-bold shadow-lg shadow-sky-500/30">
+                    V
+                  </div>
+                  <div>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">Technology Enthusiast</p>
+                    <p className="text-lg font-bold text-slate-900 dark:text-white">Cloud &amp; Web</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm text-slate-500 dark:text-gray-400">Technology Enthusiast</p>
-                  <p className="text-lg font-semibold text-slate-900 dark:text-white">Cloud &amp; Web</p>
-                </div>
+                <ul className="space-y-4">
+                  {[
+                    { color: "bg-sky-500", text: "Designing scalable architectures with sensible guardrails and observability." },
+                    { color: "bg-indigo-500", text: "Building performant interfaces that balance clarity, accessibility, and delight." },
+                    { color: "bg-emerald-500", text: "Translating lessons learned into guides, templates, and repeatable playbooks." },
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className={`mt-1.5 h-2 w-2 rounded-full flex-shrink-0 ${item.color}`} />
+                      <span className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{item.text}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-3 text-slate-700 dark:text-gray-300">
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 h-2.5 w-2.5 rounded-full bg-sky-500" />
-                  <span>Designing scalable architectures with sensible guardrails and observability.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 h-2.5 w-2.5 rounded-full bg-indigo-500" />
-                  <span>Building performant interfaces that balance clarity, accessibility, and delight.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-500" />
-                  <span>Translating lessons learned into guides, templates, and repeatable playbooks.</span>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="contact" className="py-16">
+      {/* Contact */}
+      <section id="contact" className="py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-600 via-sky-700 to-indigo-700 p-10 shadow-2xl">
-            <div className="absolute inset-0 opacity-30 mix-blend-overlay">
-              <div className="absolute -left-12 top-0 h-48 w-48 rounded-full bg-white/20 blur-3xl" />
-              <div className="absolute right-0 -bottom-12 h-56 w-56 rounded-full bg-indigo-300/30 blur-3xl" />
-            </div>
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-600 p-12 shadow-2xl shadow-sky-500/20">
+            {/* Decorative blobs */}
+            <div className="absolute -left-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
+            <div className="absolute -right-16 -bottom-16 h-64 w-64 rounded-full bg-indigo-300/20 blur-3xl" />
             <div className="relative space-y-4 text-white">
-              <p className="text-sm uppercase tracking-[0.2em] text-white/80">Get in touch</p>
-              <h2 className="text-3xl md:text-4xl font-semibold">Let's build something impactful.</h2>
-              <p className="text-lg text-white/80 max-w-2xl">
+              <p className="text-xs font-bold uppercase tracking-widest text-white/70">Get in touch</p>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Let's build something impactful.</h2>
+              <p className="text-lg text-white/75 max-w-xl leading-relaxed">
                 Have questions, ideas, or a project in mind? I love collaborating on thoughtful, human-centered products.
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
                 <a
                   href="mailto:contact@vyomak.com"
-                  className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl"
+                  className="inline-flex items-center gap-2 justify-center rounded-full bg-white px-7 py-3.5 text-sm font-bold text-slate-900 shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl"
                 >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
                   Email me
                 </a>
                 <a
                   href="/blog"
-                  className="inline-flex items-center justify-center rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+                  className="inline-flex items-center gap-2 justify-center rounded-full border border-white/40 bg-white/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/20"
                 >
                   Read the blog
                 </a>
@@ -142,6 +181,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
     </div>
   );
 }
