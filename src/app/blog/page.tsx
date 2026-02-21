@@ -1,14 +1,26 @@
 /**
  * Blog List Page
- * 
+ *
  * Displays all blog posts including published and coming soon articles.
- * 
+ *
  * Features:
  * - Published posts are clickable and show date
  * - Coming soon posts have special badge and are non-clickable
  * - Dark mode support
  * - Responsive layout
  */
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description: "Articles on cloud computing, Next.js, web development, and developer experience by Vyomak.",
+  openGraph: {
+    title: "Blog | Vyomak",
+    description: "Articles on cloud computing, Next.js, web development, and developer experience by Vyomak.",
+    url: "https://vyomak.com/blog",
+  },
+};
 
 export default function Blog() {
   // Blog posts data
@@ -73,7 +85,10 @@ export default function Blog() {
               <p className="text-gray-700 dark:text-gray-300 mb-4">{post.excerpt}</p>
 
               {/* Date or "Coming Soon" indicator */}
-              <time className={`text-sm ${post.comingSoon ? 'text-indigo-600 dark:text-indigo-400 font-semibold' : 'text-gray-500 dark:text-gray-400'}`}>
+              <time
+                dateTime={post.comingSoon ? undefined : post.date}
+                className={`text-sm ${post.comingSoon ? 'text-indigo-600 dark:text-indigo-400 font-semibold' : 'text-gray-500 dark:text-gray-400'}`}
+              >
                 {post.date}
               </time>
             </article>

@@ -50,11 +50,29 @@ This project is configured for automatic deployment to GitHub Pages using GitHub
 
 5. **Automatic Deployment**: Any push to `main` will trigger a build and deploy via GitHub Actions.
 
+## SEO
+
+The site is optimised for search engines out of the box:
+
+- **Metadata**: Per-page `title` and `description` via Next.js `metadata` exports; root layout sets a `title.template` (`"%s | Vyomak"`) so all pages get consistent suffixing automatically
+- **Open Graph & Twitter Cards**: Configured in the root layout and overridden per page for accurate social sharing previews
+- **JSON-LD structured data**: Blog post pages include a `BlogPosting` schema for Google rich results
+- **`robots.txt`**: Located at `public/robots.txt` — allows all crawlers and points to the sitemap
+- **`sitemap.xml`**: Located at `public/sitemap.xml` — lists all public routes; update this whenever you add new pages or blog posts
+- **Semantic HTML**: `<time>` elements use the `dateTime` attribute for machine-readable dates
+
+### Keeping SEO up to date when adding blog posts
+
+1. Add a `metadata` export to your new `page.tsx` (title, description, Open Graph)
+2. Add a `jsonLd` constant and render it via `<script type="application/ld+json">` in the page
+3. Add the new URL to `public/sitemap.xml`
+
 ## Adding Blog Posts
 
 1. Create a new folder in `src/app/blog/` with your post slug
-2. Add a `page.tsx` file with your content
+2. Add a `page.tsx` file with your content and a `metadata` export
 3. Update the blog index in `src/app/blog/page.tsx` to include the new post
+4. Add the new route to `public/sitemap.xml`
 
 ## Technologies Used
 
@@ -70,4 +88,3 @@ This project is configured for automatic deployment to GitHub Pages using GitHub
 - Modify `src/components/Header.tsx` for navigation
 - Change colors and styles using Tailwind classes
 - Add more sections or pages as needed
-# Update
