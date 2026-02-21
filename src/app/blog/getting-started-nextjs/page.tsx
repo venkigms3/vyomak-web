@@ -1,10 +1,38 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Getting Started with Next.js",
+  description: "Learn how to build modern web applications with Next.js and React.",
+  openGraph: {
+    title: "Getting Started with Next.js | Vyomak",
+    description: "Learn how to build modern web applications with Next.js and React.",
+    url: "https://vyomak.com/blog/getting-started-nextjs",
+    type: "article",
+    publishedTime: "2024-02-13",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: "Getting Started with Next.js",
+  description: "Learn how to build modern web applications with Next.js and React.",
+  datePublished: "2024-02-13",
+  author: { "@type": "Person", name: "Vyomak" },
+  url: "https://vyomak.com/blog/getting-started-nextjs",
+};
+
 export default function Post() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="max-w-4xl mx-auto px-4">
         <article className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
           <h1 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Getting Started with Next.js</h1>
-          <time className="text-gray-500 dark:text-gray-400 mb-8 block">February 13, 2024</time>
+          <time dateTime="2024-02-13" className="text-gray-500 dark:text-gray-400 mb-8 block">February 13, 2024</time>
           <div className="prose prose-lg dark:prose-invert max-w-none text-gray-800 dark:text-gray-200">
             <p>
               Next.js is a powerful React framework that makes building web applications easier and more efficient.

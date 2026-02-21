@@ -16,8 +16,29 @@ const geistMono = Geist_Mono({
 
 // Site metadata
 export const metadata: Metadata = {
-  title: "Vyomak - Technology Blog & Portfolio",
+  metadataBase: new URL("https://vyomak.com"),
+  title: {
+    default: "Vyomak - Technology Blog & Portfolio",
+    template: "%s | Vyomak",
+  },
   description: "Personal website of Vyomak, sharing insights on cloud computing, web development, and tech solutions.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://vyomak.com",
+    siteName: "Vyomak",
+    title: "Vyomak - Technology Blog & Portfolio",
+    description: "Personal website of Vyomak, sharing insights on cloud computing, web development, and tech solutions.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vyomak - Technology Blog & Portfolio",
+    description: "Personal website of Vyomak, sharing insights on cloud computing, web development, and tech solutions.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
