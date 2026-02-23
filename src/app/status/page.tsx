@@ -37,12 +37,6 @@ const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 let cachedGitHubStatus: 'operational' | 'degraded' | null = null;
 let cacheTime = 0;
 
-// Export for testing purposes
-export const resetCache = () => {
-  cachedGitHubStatus = null;
-  cacheTime = 0;
-};
-
 export default function StatusPage() {
   // Initialize services with loading state
   const [services, setServices] = useState<ServiceStatus[]>([
