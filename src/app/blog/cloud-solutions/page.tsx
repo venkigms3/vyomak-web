@@ -67,7 +67,7 @@ export default function Post() {
           prose-li:text-slate-600 dark:prose-li:text-slate-300">
           <p>
             Cloud computing has revolutionized the way developers build and deploy applications.
-            Let's explore some popular cloud platforms and their benefits.
+            Let&apos;s explore some popular cloud platforms and their benefits.
           </p>
           <h2>Popular Cloud Platforms</h2>
           <ul>

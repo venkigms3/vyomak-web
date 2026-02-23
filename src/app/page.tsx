@@ -88,7 +88,7 @@ export default function Home() {
             <div className="sm:col-span-2 relative overflow-hidden rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-8 shadow-sm group hover:shadow-xl transition-shadow">
               <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gradient-to-br from-sky-400/20 to-indigo-400/20 blur-2xl" />
               <p className="text-xs font-black uppercase tracking-widest text-sky-600 dark:text-sky-400 mb-3">About</p>
-              <h2 className="text-3xl font-black mb-4 tracking-tight">Hi, I'm <span className="bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent">Vyomak.</span></h2>
+              <h2 className="text-3xl font-black mb-4 tracking-tight">Hi, I&apos;m <span className="bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent">Vyomak.</span></h2>
               <p className="text-slate-500 dark:text-slate-400 leading-relaxed mb-8 max-w-lg">
                 Technology enthusiast and cloud solutions developer. I care deeply about elegant experiences
                 and reliable systems, distilling complex ideas into actionable steps teams can actually use.
@@ -172,7 +172,7 @@ export default function Home() {
             <div className="relative">
               <p className="text-xs font-black uppercase tracking-widest text-slate-400 mb-4">Get in touch</p>
               <h2 className="text-5xl md:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
-                Let's build something <span className="bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent">impactful.</span>
+                Let&apos;s build something <span className="bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent">impactful.</span>
               </h2>
               <p className="text-lg text-slate-400 max-w-xl mb-10 leading-relaxed">
                 Have questions, ideas, or a project in mind? I love collaborating on thoughtful, human-centered products.
