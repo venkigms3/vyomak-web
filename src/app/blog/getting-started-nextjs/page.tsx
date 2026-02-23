@@ -68,12 +68,12 @@ export default function Post() {
           prose-pre:bg-slate-900 dark:prose-pre:bg-slate-800 prose-pre:border prose-pre:border-slate-200 dark:prose-pre:border-slate-700 prose-pre:rounded-xl">
           <p>
             Next.js is a powerful React framework that makes building web applications easier and more efficient.
-            In this post, we'll explore the basics of getting started with Next.js.
+            In this post, we&apos;ll explore the basics of getting started with Next.js.
           </p>
           <h2>Why Next.js?</h2>
           <p>
             Next.js provides features like server-side rendering, static site generation, and API routes out of the box.
-            It's perfect for building modern web applications.
+            It&apos;s perfect for building modern web applications.
           </p>
           <h2>Installation</h2>
           <p>

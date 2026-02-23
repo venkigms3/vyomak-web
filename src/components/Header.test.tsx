@@ -151,8 +151,8 @@ describe('Header Component', () => {
     })
 
     it('should show hamburger icon when menu is closed', () => {
-      const { container } = render(<Header />)
-      
+      render(<Header />)
+
       const menuButton = screen.getByRole('button', { name: /toggle menu/i })
       const svg = menuButton.querySelector('svg')
       const path = svg?.querySelector('path')
@@ -162,8 +162,8 @@ describe('Header Component', () => {
     })
 
     it('should show close icon when menu is open', () => {
-      const { container } = render(<Header />)
-      
+      render(<Header />)
+
       const menuButton = screen.getByRole('button', { name: /toggle menu/i })
       fireEvent.click(menuButton)
       
@@ -304,8 +304,8 @@ describe('Header Component', () => {
     })
 
     it('should have gradient on logo icon', () => {
-      const { container } = render(<Header />)
-      
+      render(<Header />)
+
       const logoIcon = screen.getByText('V')
       expect(logoIcon).toHaveClass('bg-gradient-to-br', 'from-sky-500', 'to-indigo-500')
     })

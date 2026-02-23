@@ -18,6 +18,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
 
 // Navigation items configuration
@@ -36,7 +37,7 @@ export default function Header() {
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-6">
           {/* Logo and branding */}
-          <a href="/" className="group flex items-center gap-3">
+          <Link href="/" className="group flex items-center gap-3">
             {/* Gradient V icon */}
             <div className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-500 text-lg font-semibold text-white shadow-md shadow-sky-200 dark:shadow-sky-900 transition group-hover:-translate-y-0.5">
               V
@@ -46,20 +47,20 @@ export default function Header() {
               <span className="block text-sm text-slate-500 dark:text-slate-400">Technology blog</span>
               <span className="block text-lg font-semibold text-slate-900 dark:text-white">Vyomak</span>
             </div>
-          </a>
+          </Link>
 
           {/* Right side: Navigation + Theme Toggle + CTA */}
           <div className="flex items-center gap-4">
             {/* Desktop navigation menu - hidden on mobile (md:flex) */}
             <div className="hidden md:flex items-center gap-2 rounded-full border border-slate-200/80 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 px-3 py-1.5 shadow-sm">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
                   className="rounded-full px-3 py-1 text-sm font-semibold text-slate-700 dark:text-slate-300 transition hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white"
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </div>
 
@@ -87,12 +88,12 @@ export default function Header() {
             </button>
 
             {/* Call-to-action button - hidden on small mobile */}
-            <a
+            <Link
               href="/#contact"
               className="hidden sm:inline-flex items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-sky-200 dark:shadow-sky-900 transition hover:-translate-y-0.5 hover:shadow-lg"
             >
-              Let's talk
-            </a>
+              Let&apos;s talk
+            </Link>
           </div>
         </div>
 
@@ -101,23 +102,23 @@ export default function Header() {
           <div className="md:hidden py-4 border-t border-slate-200 dark:border-slate-700">
             <div className="flex flex-col gap-2">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className="px-4 py-2 text-base font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition"
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
               {/* Mobile CTA button */}
-              <a
+              <Link
                 href="/#contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="mt-2 mx-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-sky-200 dark:shadow-sky-900 transition hover:-translate-y-0.5 hover:shadow-lg"
               >
-                Let's talk
-              </a>
+                Let&apos;s talk
+              </Link>
             </div>
           </div>
         )}
