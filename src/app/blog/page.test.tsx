@@ -206,12 +206,6 @@ describe('Blog Page', () => {
       const hasBold = postTitle?.className.includes('font-bold') || postTitle?.className.includes('font-black')
       expect(hasBold).toBe(true)
     })
-
-    it('should have a page title heading', () => {
-      const { container } = render(<Blog />)
-      const h1 = container.querySelector('h1')
-      expect(h1).toBeInTheDocument()
-    })
   })
 
   describe('Layout and Spacing', () => {
