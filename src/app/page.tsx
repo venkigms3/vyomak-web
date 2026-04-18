@@ -9,11 +9,13 @@ export const metadata: Metadata = {
     description: "Cloud architect and front-end craftsman building elegant, resilient products. Specialising in Next.js, React, AWS, Azure, and Terraform.",
     url: "https://vyomak.com/",
     type: "website",
+    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "Vyomak - Cloud Architect & Front-End Developer" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Vyomak - Cloud Architect & Front-End Developer",
     description: "Cloud architect and front-end craftsman building elegant, resilient products. Specialising in Next.js, React, AWS, Azure, and Terraform.",
+    images: ["/og-image.svg"],
   },
   alternates: {
     canonical: "https://vyomak.com/",
