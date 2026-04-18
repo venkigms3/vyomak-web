@@ -4,12 +4,22 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Getting Started with Next.js",
   description: "Learn how to build modern web applications with Next.js and React.",
+  alternates: {
+    canonical: "https://vyomak.com/blog/getting-started-nextjs",
+  },
   openGraph: {
     title: "Getting Started with Next.js | Vyomak",
     description: "Learn how to build modern web applications with Next.js and React.",
     url: "https://vyomak.com/blog/getting-started-nextjs",
     type: "article",
     publishedTime: "2024-02-13",
+    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "Getting Started with Next.js" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Getting Started with Next.js | Vyomak",
+    description: "Learn how to build modern web applications with Next.js and React.",
+    images: ["/og-image.svg"],
   },
 };
 
@@ -19,8 +29,19 @@ const jsonLd = {
   headline: "Getting Started with Next.js",
   description: "Learn how to build modern web applications with Next.js and React.",
   datePublished: "2024-02-13",
+  dateModified: "2024-02-13",
   author: { "@type": "Person", name: "Vyomak" },
   url: "https://vyomak.com/blog/getting-started-nextjs",
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://vyomak.com" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://vyomak.com/blog" },
+    { "@type": "ListItem", position: 3, name: "Getting Started with Next.js", item: "https://vyomak.com/blog/getting-started-nextjs" },
+  ],
 };
 
 export default function Post() {
@@ -29,6 +50,10 @@ export default function Post() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       {/* Post header */}

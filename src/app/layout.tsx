@@ -45,6 +45,31 @@ export const metadata: Metadata = {
   verification: {
     google: "avrqcrgGioNgbNm9chrk0CrlDHvnnAqFaQXPa73gqww",
   },
+  icons: {
+    icon: "/icon.svg",
+    apple: "/apple-icon.svg",
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Vyomak",
+  url: "https://vyomak.com",
+  logo: "https://vyomak.com/og-image.svg",
+  sameAs: ["https://github.com/venkigms3"],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Vyomak",
+  url: "https://vyomak.com",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://vyomak.com/blog?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export default function RootLayout({
@@ -63,6 +88,14 @@ export default function RootLayout({
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
         <meta httpEquiv="X-Frame-Options" content="DENY" />
         <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         
         {/* 
           Theme initialization script
