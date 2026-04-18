@@ -4,12 +4,22 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Cloud Solutions for Developers",
   description: "Exploring various cloud platforms and their benefits for development.",
+  alternates: {
+    canonical: "https://vyomak.com/blog/cloud-solutions",
+  },
   openGraph: {
     title: "Cloud Solutions for Developers | Vyomak",
     description: "Exploring various cloud platforms and their benefits for development.",
     url: "https://vyomak.com/blog/cloud-solutions",
     type: "article",
     publishedTime: "2024-02-12",
+    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "Cloud Solutions for Developers" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cloud Solutions for Developers | Vyomak",
+    description: "Exploring various cloud platforms and their benefits for development.",
+    images: ["/og-image.svg"],
   },
 };
 
@@ -19,8 +29,19 @@ const jsonLd = {
   headline: "Cloud Solutions for Developers",
   description: "Exploring various cloud platforms and their benefits for development.",
   datePublished: "2024-02-12",
+  dateModified: "2024-02-12",
   author: { "@type": "Person", name: "Vyomak" },
   url: "https://vyomak.com/blog/cloud-solutions",
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://vyomak.com" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://vyomak.com/blog" },
+    { "@type": "ListItem", position: 3, name: "Cloud Solutions for Developers", item: "https://vyomak.com/blog/cloud-solutions" },
+  ],
 };
 
 export default function Post() {
@@ -29,6 +50,10 @@ export default function Post() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       {/* Post header */}

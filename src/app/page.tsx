@@ -1,10 +1,47 @@
+import type { Metadata } from "next";
 import HomeSlider from "@/components/HomeSlider";
+
+export const metadata: Metadata = {
+  title: "Vyomak - Cloud Architect & Front-End Developer",
+  description: "Cloud architect and front-end craftsman building elegant, resilient products. Specialising in Next.js, React, AWS, Azure, and Terraform.",
+  openGraph: {
+    title: "Vyomak - Cloud Architect & Front-End Developer",
+    description: "Cloud architect and front-end craftsman building elegant, resilient products. Specialising in Next.js, React, AWS, Azure, and Terraform.",
+    url: "https://vyomak.com/",
+    type: "website",
+    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "Vyomak - Cloud Architect & Front-End Developer" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vyomak - Cloud Architect & Front-End Developer",
+    description: "Cloud architect and front-end craftsman building elegant, resilient products. Specialising in Next.js, React, AWS, Azure, and Terraform.",
+    images: ["/og-image.svg"],
+  },
+  alternates: {
+    canonical: "https://vyomak.com/",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Vyomak",
+  url: "https://vyomak.com",
+  jobTitle: "Cloud Architect & Front-End Developer",
+  description: "Cloud architect and front-end craftsman building elegant, resilient products that scale with confidence.",
+  knowsAbout: ["Next.js", "React", "TypeScript", "AWS", "Azure", "Terraform", "Node.js", "Cloud Architecture"],
+  sameAs: ["https://github.com/venkigms3"],
+};
 
 const techStack = ["Next.js", "React", "TypeScript", "AWS", "Azure", "Terraform", "Node.js"];
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white dark:bg-[#080810] text-slate-900 dark:text-white overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       {/* ── Hero ──────────────────────────────────────── */}
       <section className="relative min-h-[92vh] flex items-center">
