@@ -8,7 +8,25 @@ export const metadata: Metadata = {
     title: "Blog | Vyomak",
     description: "Articles on cloud computing, Next.js, web development, and developer experience by Vyomak.",
     url: "https://vyomak.com/blog",
+    type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | Vyomak",
+    description: "Articles on cloud computing, Next.js, web development, and developer experience by Vyomak.",
+  },
+  alternates: {
+    canonical: "https://vyomak.com/blog/",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Blog | Vyomak",
+  description: "Articles on cloud computing, Next.js, web development, and developer experience by Vyomak.",
+  url: "https://vyomak.com/blog",
+  author: { "@type": "Person", name: "Vyomak" },
 };
 
 const posts = [
@@ -45,6 +63,10 @@ export default function Blog() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#080810]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       {/* ── Header ──────────────────────────────────── */}
       <div className="relative overflow-hidden bg-slate-50 dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800/60">
