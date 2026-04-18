@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 
 const comingSoonItems = [
   {
@@ -77,7 +78,7 @@ export default function HomeSlider() {
             <button
               onClick={prev}
               aria-label="Previous slide"
-              className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-slate-600 dark:text-gray-300 shadow-sm transition hover:bg-slate-50 dark:hover:bg-gray-700"
+              className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 shadow-sm transition hover:bg-slate-50 dark:hover:bg-slate-700"
             >
               <svg
                 className="h-4 w-4"
@@ -96,7 +97,7 @@ export default function HomeSlider() {
             <button
               onClick={next}
               aria-label="Next slide"
-              className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-slate-600 dark:text-gray-300 shadow-sm transition hover:bg-slate-50 dark:hover:bg-gray-700"
+              className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 shadow-sm transition hover:bg-slate-50 dark:hover:bg-slate-700"
             >
               <svg
                 className="h-4 w-4"
@@ -117,7 +118,7 @@ export default function HomeSlider() {
 
         {/* Slide container */}
         <div
-          className="relative overflow-hidden rounded-3xl border border-slate-100 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-lg shadow-slate-200/60 dark:shadow-gray-900/60"
+          className="relative overflow-hidden rounded-3xl border border-slate-100 dark:border-slate-700 bg-white/90 dark:bg-slate-800/90 shadow-lg shadow-slate-200/60 dark:shadow-slate-900/60"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
@@ -142,19 +143,19 @@ export default function HomeSlider() {
               <h3 className="text-2xl font-semibold text-slate-900 dark:text-white mb-2">
                 Upcoming articles
               </h3>
-              <p className="text-slate-500 dark:text-gray-400 mb-6">
+              <p className="text-slate-500 dark:text-slate-400 mb-6">
                 New deep-dives being prepared right now.
               </p>
               <div className="grid gap-4 sm:grid-cols-2">
                 {comingSoonItems.map((item) => (
                   <div
                     key={item.title}
-                    className="rounded-2xl border border-slate-100 dark:border-gray-700 bg-slate-50/80 dark:bg-gray-900/60 p-5"
+                    className="rounded-2xl border border-slate-100 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-900/60 p-5"
                   >
                     <h4 className="font-semibold text-slate-900 dark:text-white mb-1">
                       {item.title}
                     </h4>
-                    <p className="text-sm text-slate-500 dark:text-gray-400 leading-relaxed">
+                    <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -173,14 +174,14 @@ export default function HomeSlider() {
               <h3 className="text-2xl font-semibold text-slate-900 dark:text-white mb-2">
                 Cloud service status
               </h3>
-              <p className="text-slate-500 dark:text-gray-400 mb-6">
+              <p className="text-slate-500 dark:text-slate-400 mb-6">
                 Live health overview of key platforms.
               </p>
               <div className="grid gap-3 sm:grid-cols-3">
                 {statusServices.map((svc) => (
                   <div
                     key={svc.name}
-                    className="flex items-center gap-3 rounded-2xl border border-slate-100 dark:border-gray-700 bg-slate-50/80 dark:bg-gray-900/60 px-4 py-3"
+                    className="flex items-center gap-3 rounded-2xl border border-slate-100 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-900/60 px-4 py-3"
                   >
                     <span className="text-xl">{svc.icon}</span>
                     <div className="flex-1 min-w-0">
@@ -192,54 +193,54 @@ export default function HomeSlider() {
                   </div>
                 ))}
               </div>
-              <a
+              <Link
                 href="/status"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-sky-700 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-300 mt-6"
               >
                 View full status page
                 <span aria-hidden>→</span>
-              </a>
+              </Link>
             </div>
 
             {/* Slide 3 — Latest Blogs */}
             <div className="w-full flex-shrink-0 p-8 sm:p-10">
               <div className="flex items-center gap-3 mb-6">
-                <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 dark:bg-gray-700 px-3 py-1 text-xs font-semibold text-slate-700 dark:text-gray-300 ring-1 ring-slate-200 dark:ring-gray-600">
+                <span className="inline-flex items-center gap-2 rounded-full bg-slate-100 dark:bg-slate-700 px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-600">
                   Blog
                 </span>
               </div>
               <h3 className="text-2xl font-semibold text-slate-900 dark:text-white mb-2">
                 Latest posts
               </h3>
-              <p className="text-slate-500 dark:text-gray-400 mb-6">
+              <p className="text-slate-500 dark:text-slate-400 mb-6">
                 Fresh insights on cloud and web development.
               </p>
               <div className="grid gap-4 sm:grid-cols-2">
                 {latestPosts.map((post) => (
-                  <a
+                  <Link
                     key={post.href}
                     href={post.href}
-                    className="group rounded-2xl border border-slate-100 dark:border-gray-700 bg-slate-50/80 dark:bg-gray-900/60 p-5 transition hover:border-sky-200 dark:hover:border-sky-800 hover:shadow-md"
+                    className="group rounded-2xl border border-slate-100 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-900/60 p-5 transition hover:border-sky-200 dark:hover:border-sky-800 hover:shadow-md"
                   >
                     <h4 className="font-semibold text-slate-900 dark:text-white mb-1 group-hover:text-sky-700 dark:group-hover:text-sky-400">
                       {post.title}
                     </h4>
-                    <p className="text-sm text-slate-500 dark:text-gray-400 leading-relaxed">
+                    <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
                       {post.description}
                     </p>
                     <span className="inline-flex items-center gap-1 text-sm font-semibold text-sky-700 dark:text-sky-400 mt-3">
                       Read more <span aria-hidden>→</span>
                     </span>
-                  </a>
+                  </Link>
                 ))}
               </div>
-              <a
+              <Link
                 href="/blog"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-sky-700 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-300 mt-6"
               >
                 View all posts
                 <span aria-hidden>→</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -254,7 +255,7 @@ export default function HomeSlider() {
               className={`h-2 rounded-full transition-all duration-300 ${
                 i === current
                   ? 'w-8 bg-gradient-to-r from-sky-500 to-indigo-500'
-                  : 'w-2 bg-slate-300 dark:bg-gray-600 hover:bg-slate-400 dark:hover:bg-gray-500'
+                  : 'w-2 bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500'
               }`}
             />
           ))}

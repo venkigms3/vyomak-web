@@ -57,7 +57,7 @@ jobs:
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: npm ci
       - name: Run tests
-        run: npm test
+        run: npm test -- --ci
 
   build:
     runs-on: ubuntu-latest

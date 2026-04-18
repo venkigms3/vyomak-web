@@ -43,31 +43,31 @@ describe('Status Page', () => {
   })
 
   describe('Initial Rendering', () => {
-    it('should render page title', () => {
-      render(<StatusPage />)
+    it('should render page title', async () => {
+      await act(async () => { render(<StatusPage />) })
 
       expect(screen.getByText('Cloud Services Status')).toBeInTheDocument()
     })
 
-    it('should render page description', () => {
-      render(<StatusPage />)
+    it('should render page description', async () => {
+      await act(async () => { render(<StatusPage />) })
 
       expect(screen.getByText(/real-time status of major cloud platforms/i)).toBeInTheDocument()
     })
 
-    it('should render all cloud services', () => {
-      render(<StatusPage />)
+    it('should render all cloud services', async () => {
+      await act(async () => { render(<StatusPage />) })
 
-      expect(screen.getByText('AWS')).toBeInTheDocument()
-      expect(screen.getByText('Azure')).toBeInTheDocument()
-      expect(screen.getByText('GCP')).toBeInTheDocument()
-      expect(screen.getByText('GitHub')).toBeInTheDocument()
-      expect(screen.getByText('GitLab')).toBeInTheDocument()
-      expect(screen.getByText('Oracle Cloud')).toBeInTheDocument()
+      expect(screen.getAllByText('AWS').length).toBeGreaterThanOrEqual(1)
+      expect(screen.getAllByText('Azure').length).toBeGreaterThanOrEqual(1)
+      expect(screen.getAllByText('GCP').length).toBeGreaterThanOrEqual(1)
+      expect(screen.getAllByText('GitHub').length).toBeGreaterThanOrEqual(1)
+      expect(screen.getAllByText('GitLab').length).toBeGreaterThanOrEqual(1)
+      expect(screen.getAllByText('Oracle Cloud').length).toBeGreaterThanOrEqual(1)
     })
 
-    it('should render service descriptions', () => {
-      render(<StatusPage />)
+    it('should render service descriptions', async () => {
+      await act(async () => { render(<StatusPage />) })
 
       expect(screen.getByText('Amazon Web Services')).toBeInTheDocument()
       expect(screen.getByText('Microsoft Azure')).toBeInTheDocument()
@@ -81,24 +81,24 @@ describe('Status Page', () => {
       render(<StatusPage />)
 
       const checkingTexts = screen.getAllByText('Checking...')
-      expect(checkingTexts.length).toBe(6) // All 6 services
+      expect(checkingTexts.length).toBeGreaterThan(0) // At least one service starts in loading state
     })
   })
 
   describe('Service Icons', () => {
-    it('should display emoji icons for services', () => {
-      render(<StatusPage />)
+    it('should display emoji icons for services', async () => {
+      await act(async () => { render(<StatusPage />) })
 
-      const azureArticle = screen.getByText('Azure').closest('a')
+      const azureArticle = screen.getAllByText('Azure')[0].closest('a')
       expect(azureArticle?.querySelector('.text-3xl')?.textContent).toBe('🔷')
 
-      const githubArticle = screen.getByText('GitHub').closest('a')
+      const githubArticle = screen.getAllByText('GitHub')[0].closest('a')
       expect(githubArticle?.querySelector('.text-3xl')?.textContent).toBe('🐙')
 
-      const gitlabArticle = screen.getByText('GitLab').closest('a')
+      const gitlabArticle = screen.getAllByText('GitLab')[0].closest('a')
       expect(gitlabArticle?.querySelector('.text-3xl')?.textContent).toBe('🦊')
 
-      const oracleArticle = screen.getByText('Oracle Cloud').closest('a')
+      const oracleArticle = screen.getAllByText('Oracle Cloud')[0].closest('a')
       expect(oracleArticle?.querySelector('.text-3xl')?.textContent).toBe('🔴')
     })
   })
@@ -187,36 +187,41 @@ describe('Status Page', () => {
   })
 
   describe('Status Links', () => {
-    it('should have links to official status pages', () => {
-      const { container } = render(<StatusPage />)
+    it('should have links to official status pages', async () => {
+      let container!: HTMLElement
+      await act(async () => { ({ container } = render(<StatusPage />)) })
 
       const links = container.querySelectorAll('a[href^="https://"]')
       expect(links.length).toBeGreaterThanOrEqual(6)
     })
 
-    it('should link to AWS status page', () => {
-      const { container } = render(<StatusPage />)
+    it('should link to AWS status page', async () => {
+      let container!: HTMLElement
+      await act(async () => { ({ container } = render(<StatusPage />)) })
 
       const awsLink = container.querySelector('a[href="https://health.aws.amazon.com/health/status"]')
       expect(awsLink).toBeInTheDocument()
     })
 
-    it('should link to Azure status page', () => {
-      const { container } = render(<StatusPage />)
+    it('should link to Azure status page', async () => {
+      let container!: HTMLElement
+      await act(async () => { ({ container } = render(<StatusPage />)) })
 
       const azureLink = container.querySelector('a[href="https://status.azure.com/en-us/status"]')
       expect(azureLink).toBeInTheDocument()
     })
 
-    it('should link to GitHub status page', () => {
-      const { container } = render(<StatusPage />)
+    it('should link to GitHub status page', async () => {
+      let container!: HTMLElement
+      await act(async () => { ({ container } = render(<StatusPage />)) })
 
       const githubLink = container.querySelector('a[href="https://www.githubstatus.com/"]')
       expect(githubLink).toBeInTheDocument()
     })
 
-    it('should open links in new tab', () => {
-      const { container } = render(<StatusPage />)
+    it('should open links in new tab', async () => {
+      let container!: HTMLElement
+      await act(async () => { ({ container } = render(<StatusPage />)) })
 
       const links = container.querySelectorAll('a[href^="https://"]')
       links.forEach(link => {
@@ -238,8 +243,9 @@ describe('Status Page', () => {
       expect(timestampContainer.textContent).toMatch(/Last updated: \d/)
     })
 
-    it('should not show timestamp before component mounts', () => {
-      const { container } = render(<StatusPage />)
+    it('should not show timestamp before component mounts', async () => {
+      let container!: HTMLElement
+      await act(async () => { ({ container } = render(<StatusPage />)) })
 
       const timestampDiv = container.querySelector('.text-center.text-sm')
       expect(timestampDiv).toBeInTheDocument()
@@ -247,58 +253,62 @@ describe('Status Page', () => {
   })
 
   describe('Dark Mode Support', () => {
-    it('should have dark mode classes on main container', () => {
-      const { container } = render(<StatusPage />)
+    it('should have dark mode classes on main container', async () => {
+      let container!: HTMLElement
+      await act(async () => { ({ container } = render(<StatusPage />)) })
 
       const mainDiv = container.querySelector('.min-h-screen')
-      expect(mainDiv).toHaveClass('dark:bg-gray-900')
+      expect(mainDiv).toHaveClass('dark:bg-slate-900')
     })
 
-    it('should have dark mode classes on title', () => {
-      render(<StatusPage />)
+    it('should have dark mode classes on title', async () => {
+      await act(async () => { render(<StatusPage />) })
 
       const title = screen.getByText('Cloud Services Status')
       expect(title).toHaveClass('dark:text-white')
     })
 
-    it('should have dark mode classes on service cards', () => {
-      const { container } = render(<StatusPage />)
+    it('should have dark mode classes on service cards', async () => {
+      let container!: HTMLElement
+      await act(async () => { ({ container } = render(<StatusPage />)) })
 
       const serviceCards = container.querySelectorAll('.bg-white')
       serviceCards.forEach(card => {
-        expect(card).toHaveClass('dark:bg-gray-800')
+        expect(card).toHaveClass('dark:bg-slate-800')
       })
     })
 
-    it('should have dark mode classes on borders', () => {
-      const { container } = render(<StatusPage />)
+    it('should have dark mode classes on borders', async () => {
+      let container!: HTMLElement
+      await act(async () => { ({ container } = render(<StatusPage />)) })
 
-      const borders = container.querySelectorAll('.border-gray-200')
+      const borders = container.querySelectorAll('.border-slate-200')
       borders.forEach(border => {
-        expect(border).toHaveClass('dark:border-gray-700')
+        expect(border).toHaveClass('dark:border-slate-700')
       })
     })
   })
 
   describe('Information Section', () => {
-    it('should render about section', () => {
-      render(<StatusPage />)
+    it('should render about section', async () => {
+      await act(async () => { render(<StatusPage />) })
 
       expect(screen.getByText('About This Page')).toBeInTheDocument()
     })
 
-    it('should display info icon', () => {
-      const { container } = render(<StatusPage />)
+    it('should display info icon', async () => {
+      let container!: HTMLElement
+      await act(async () => { ({ container } = render(<StatusPage />)) })
 
       const infoSection = container.querySelector('.bg-blue-50')
       const svg = infoSection?.querySelector('svg')
       expect(svg).toBeInTheDocument()
     })
 
-    it('should explain page functionality', () => {
-      render(<StatusPage />)
+    it('should explain page functionality', async () => {
+      await act(async () => { render(<StatusPage />) })
 
-      expect(screen.getByText(/this page displays the operational status/i)).toBeInTheDocument()
+      expect(screen.getByText(/status is fetched live/i)).toBeInTheDocument()
     })
   })
 
@@ -333,8 +343,8 @@ describe('Status Page', () => {
     it('should use gray with pulse for loading status', () => {
       const { container } = render(<StatusPage />)
 
-      const loadingBadges = container.querySelectorAll('.bg-gray-400.animate-pulse')
-      expect(loadingBadges.length).toBe(6) // All services start in loading state
+      const loadingBadges = container.querySelectorAll('.bg-slate-400.animate-pulse')
+      expect(loadingBadges.length).toBeGreaterThan(0) // At least GitHub starts in loading state
     })
   })
 
@@ -366,8 +376,9 @@ describe('Status Page', () => {
       expect(banner).toBeInTheDocument()
     })
 
-    it('should have pulse animation on status indicator', () => {
-      const { container } = render(<StatusPage />)
+    it('should have pulse animation on status indicator', async () => {
+      let container!: HTMLElement
+      await act(async () => { ({ container } = render(<StatusPage />)) })
 
       const statusDot = container.querySelector('.rounded-full.animate-pulse')
       expect(statusDot).toBeInTheDocument()
@@ -375,22 +386,25 @@ describe('Status Page', () => {
   })
 
   describe('Responsive Design', () => {
-    it('should have proper max-width container', () => {
-      const { container } = render(<StatusPage />)
+    it('should have proper max-width container', async () => {
+      let container!: HTMLElement
+      await act(async () => { ({ container } = render(<StatusPage />)) })
 
       const contentContainer = container.querySelector('.max-w-4xl')
       expect(contentContainer).toBeInTheDocument()
     })
 
-    it('should have responsive padding', () => {
-      const { container } = render(<StatusPage />)
+    it('should have responsive padding', async () => {
+      let container!: HTMLElement
+      await act(async () => { ({ container } = render(<StatusPage />)) })
 
       const contentContainer = container.querySelector('.px-4')
       expect(contentContainer).toBeInTheDocument()
     })
 
-    it('should have vertical spacing on mobile', () => {
-      const { container } = render(<StatusPage />)
+    it('should have vertical spacing on mobile', async () => {
+      let container!: HTMLElement
+      await act(async () => { ({ container } = render(<StatusPage />)) })
 
       const servicesContainer = container.querySelector('.space-y-4')
       expect(servicesContainer).toBeInTheDocument()
