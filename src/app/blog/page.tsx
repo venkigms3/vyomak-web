@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -65,7 +66,7 @@ export default function Blog() {
         {featured && (
           <div>
             <p className="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Featured</p>
-            <a
+            <Link
               href={`/blog/${featured.slug}`}
               className="group relative flex flex-col sm:flex-row overflow-hidden rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 shadow-sm hover:shadow-2xl hover:shadow-sky-500/5 transition-all hover:-translate-y-1"
             >
@@ -101,7 +102,7 @@ export default function Blog() {
               </div>
               {/* Bottom accent */}
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-sky-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </a>
+            </Link>
           </div>
         )}
 
@@ -111,7 +112,7 @@ export default function Blog() {
             <p className="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">More posts</p>
             <div className="grid gap-5 sm:grid-cols-2">
               {rest.map((post) => (
-                <a
+                <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
                   className="group relative overflow-hidden rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-500/5 hover:border-sky-200 dark:hover:border-sky-800"
@@ -132,7 +133,7 @@ export default function Blog() {
                     </span>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-sky-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
+                </Link>
               ))}
             </div>
           </div>

@@ -151,16 +151,13 @@ export default function StatusPage() {
         });
     }
 
-    // For other services, show as operational by default
-    // Note: Fetching their status requires CORS proxies or server-side API calls
-    // In a production app, you'd want to implement server-side status checking
-    setTimeout(() => {
-      updateServiceStatus('AWS', 'operational');
-      updateServiceStatus('Azure', 'operational');
-      updateServiceStatus('GCP', 'operational');
-      updateServiceStatus('GitLab', 'operational');
-      updateServiceStatus('Oracle Cloud', 'operational');
-    }, 1000);
+    // These services do not expose a CORS-friendly status API.
+    // Status links point to their official pages for real-time information.
+    updateServiceStatus('AWS', 'operational');
+    updateServiceStatus('Azure', 'operational');
+    updateServiceStatus('GCP', 'operational');
+    updateServiceStatus('GitLab', 'operational');
+    updateServiceStatus('Oracle Cloud', 'operational');
   }, [updateServiceStatus]);
 
   /**
@@ -177,7 +174,7 @@ export default function StatusPage() {
       case 'outage':
         return 'bg-red-500';       // Red
       default:
-        return 'bg-gray-400 animate-pulse';  // Gray with pulse animation
+        return 'bg-slate-400 animate-pulse';  // Gray with pulse animation
     }
   };
 
@@ -200,16 +197,18 @@ export default function StatusPage() {
   };
 
   // Check if all services are operational for overall status banner
-  const allOperational = services.every((s) => s.status === 'operational');
+  // Exclude loading state so the banner doesn't falsely show degraded on initial render
+  const loadedServices = services.filter((s) => s.status !== 'loading');
+  const allOperational = loadedServices.length === 0 || loadedServices.every((s) => s.status === 'operational');
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-16">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-16">
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+          <h1 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white">
             Cloud Services Status
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-lg text-slate-600 dark:text-slate-300 mb-6">
             Real-time status of major cloud platforms and developer services
           </p>
           
@@ -236,16 +235,16 @@ export default function StatusPage() {
               href={service.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="block bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition group"
+              className="block bg-white dark:bg-slate-800 p-6 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition group"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <span className="text-3xl">{service.icon}</span>
                   <div>
-                    <h2 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                    <h2 className="text-xl font-semibold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400">
                       {service.name}
                     </h2>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-slate-500 dark:text-slate-400">
                       {service.description}
                     </p>
                   </div>
@@ -255,7 +254,7 @@ export default function StatusPage() {
                   <span className={`px-3 py-1 rounded-full text-xs font-semibold text-white ${getStatusColor(service.status)}`}>
                     {getStatusText(service.status)}
                   </span>
-                  <svg className="w-5 h-5 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-slate-400 group-hover:text-sky-600 dark:group-hover:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                 </div>
@@ -274,14 +273,13 @@ export default function StatusPage() {
                 About This Page
               </h3>
               <p className="text-sm text-blue-800 dark:text-blue-400 leading-relaxed">
-                This page displays the operational status of major cloud platforms. Click on any service to view detailed 
-                status information and incident reports on their official status pages. Data is refreshed automatically.
+                <strong>GitHub</strong> status is fetched live from the GitHub Status API. All other services (AWS, Azure, GCP, GitLab, Oracle Cloud) do not expose a CORS-friendly API — click their cards to view real-time status on their official pages.
               </p>
             </div>
           </div>
         </div>
 
-        <div className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
+        <div className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
           {lastUpdated && `Last updated: ${lastUpdated}`}
         </div>
       </div>
